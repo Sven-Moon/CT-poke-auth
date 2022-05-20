@@ -1,0 +1,23 @@
+{% extends 'main.html' %} {% block header %}
+<div class="row">
+  <img src="" alt="" />
+  <div class="p-name"></div>
+</div>
+{% endblock header %} {% block content %}
+<div class="row">
+  <ul>
+    {% for attribute in attributes %}
+    <li>{{ attribute.name }}: {{ attribute.value }}</li>
+    {% endfor %}
+  </ul>
+</div>
+<!-- TODO: add script toggle display -->
+<button>Display Abilities?</button>
+<div class="abilities">
+  <ul>
+    {% for ability in abilities %}
+    <li>{{ ability.name }}: {{ ability.value }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}
