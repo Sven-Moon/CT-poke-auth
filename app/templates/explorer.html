@@ -21,10 +21,7 @@
           {{ form.pokemon_name(class="form-control form-control-lg") }}
         {% endif %}
     </div>
-    {# <label for="nameInput">Name</label>
-    <input type="text" id="nameInput" /> #}
-    <div class="separator">... OR ... </div>
-    <div>This thing: {{ form.pokemon_name.value }}</div>
+    <div>{{ form.pokemon_name.data }}</div>
     <div>      
       {{ form.submit(class="btn btn-outline-info") }}
     </div>

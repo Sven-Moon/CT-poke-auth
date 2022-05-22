@@ -16,7 +16,8 @@ def explorer():
     form = SearchForm()
     if form.validate_on_submit():
         return redirect(url_for('display', pokemon_name=form.pokemon_name.data))
-    else:
+    
+    if form.errors:
         flash(f'You have to add a name before pressing this button.', category='danger') 
         
     
