@@ -1,0 +1,26 @@
+@import "./pages/home.css";
+@import "./pages/explorer.css";
+@import "./pages/display.css";
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn {
+  border: none;
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: .5rem;
+}
+.btn:hover {
+  background-color: rgb(81, 81, 81);
+  color: white;
+  border: white;
+}
+
+body {
+  padding: 1rem;
+}
