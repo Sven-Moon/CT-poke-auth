@@ -56,7 +56,7 @@ class Pokedex:
         self.pokemon[name.lower()].view()
     
     def get_ability(self,name):
-        if not self.pokemon.get(name):
+        if not self.abilities.get(name):
             data = r.get(f"https://pokeapi.co/api/v2/ability/{name}")
             if data.status_code == 200:
                 data = data.json()
@@ -68,7 +68,8 @@ class Pokedex:
                 self.abilities[name] = ability
             else:
                 print('Error getting abilities')
-            return ability
+                
+        return self.abilities[name]
     
     def get_types(self) -> None:
         """Populates types list"""
@@ -99,8 +100,6 @@ class Pokedex:
     def get_pokemon(self, name) -> Pokemon:
         """fetches pokemon, adds to dex, & returns obj"""
         # populate pokemon names from type if not already
-        print(f'Getting: {name}')
-        print(f'Getting: {type(name)}')
         if not self.pokemon.get(name):
             type_data = r.get(f'https://pokeapi.co/api/v2/pokemon/{name}')
             if type_data.status_code == 200:
@@ -120,7 +119,7 @@ class Pokedex:
                 acknowledge()
                 return None
         else:
-            return self.get(name)
+            return self.pokemon.get(name)
 
     def get_pokemon_by_type(self, type_name):
         # populate pokemon names from type if not already

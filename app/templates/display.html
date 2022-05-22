@@ -1,25 +1,51 @@
-{% extends 'layout.html' %} {% block header %}
+<!-- prettier-ignore -->
+{% extends 'layout.html' %} 
+
+{% block header %}
 <div class="row">
   <img src="" alt="" />
   <div class="p-name"></div>
 </div>
 {% endblock header %} {% block content %}
-<div class="row">
-  <ul>
-    <li>Name: {{ pokemon.name }}</li>
-    <li>Weight: {{ pokemon.weight }}</li>
-    <li>Species: {{ pokemon.species }}</li>
-    <li>Types: {{ ", ".join(pokemon.types) }}</li>
-    <li>Abilities: {{ ", ".join(pokemon.abilities) }}</li>
-  </ul>
+<div class="card mb-3" style="max-width: 540px">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img
+        src="{{ pokemon.sprite_default }}"
+        class="card-img"
+        alt="{{ pokemon.name|title }} front"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ pokemon.name }}</h5>
+
+        <ul>
+          <li>Weight: {{ pokemon.weight }}</li>
+          <li>Types: {{ ", ".join(pokemon.types) }}</li>
+          <li>Abilities: {{ ", ".join(pokemon.abilities) }}</li>
+        </ul>
+        <p class="card-text">
+          <small class="text-muted">Species: {{ pokemon.species }}</small>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- TODO: add script toggle display -->
-<button>Display Abilities?</button>
 <div class="abilities">
   <ul>
     {% for ability in abilities %}
-    <li>{{ ability.name }}: {{ ability.value }}</li>
+    <div class="card mb-3">
+      <div class="card-header">{{ ability.name|title }}</div>
+      <div class="card-body">
+        {% for effect in ability.effects %}
+        <p class="card-text">{{effect}}</p>
+        {% endfor %}
+      </div>
+    </div>
     {% endfor %}
   </ul>
 </div>
+<a href="{{ url_for('explorer') }}" class="btn primary"></a>
 {% endblock content %}

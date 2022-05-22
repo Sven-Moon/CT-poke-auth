@@ -7,20 +7,6 @@ a {
   color: inherit;
 }
 
-/* .btn {
-  border: none;
-  background-color: white;
-  color: black;
-  padding: 1rem;
-  cursor: pointer;
-  border-radius: .5rem;
-}
-.btn:hover {
-  background-color: rgb(81, 81, 81);
-  color: white;
-  border: white;
-} */
-
 body {
   padding: 1rem;
 
@@ -28,4 +14,14 @@ body {
 
 body * {
   display: flex;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+li {
+  padding: 0;
+  margin: 0;
 }
