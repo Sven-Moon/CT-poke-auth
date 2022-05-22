@@ -1,11 +1,16 @@
-{% extends 'layout.html' %} {% block header %}
-<h3>Hello, and welcome to the...</h3>
-<h1>Pokemon Main Menu & Welcoming Center.</h1>
-<p>Do you feel welcomed?</p>
-<p>Don't answer. There's no input mechanic for that.</p>
-<h4>You can do these things:</h4>
-{% endblock header %} {% block content %}
-<a href="{{ url_for('explorer') }}" class="btn">
-  <span class="hotkey">Explore Pokemon & Their Abilities
-</a>
+<!-- prettier-ignore -->
+{% extends 'layout.html' %} 
+
+{% block header %}
+  <h3>Hello, and welcome to the...</h3>
+  <h1>Pokemon Main Menu & Welcoming Center.</h1>
+  <p>Do you feel welcomed?</p>
+  <p>Don't answer. There's no input mechanic for that.</p>
+  <h4>You can do these things:</h4>
+{% endblock header %} 
+
+{% block content %}
+  <a href="{{ url_for('explorer') }}" class="btn">
+    <span class="hotkey">Explore Pokemon & Their Abilities
+  </a>
 {% endblock content %}

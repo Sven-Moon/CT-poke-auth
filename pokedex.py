@@ -7,12 +7,13 @@ clear = lambda: os.system('cls')
        
 
 class Pokemon:
-    def __init__(self, name, abilities, weight, types, species) -> None:
+    def __init__(self, name, abilities, weight, types, species,default_sprite) -> None:
         self.name = name
         self.abilities = abilities
         self.weight = weight
         self.types = types
         self.species = species
+        self.sprite_default = default_sprite
         
     def view(self):
         print('Name:', self.name.title())
@@ -40,8 +41,11 @@ class Pokedex:
         self.types = []
         self.species = []
         self.abilities = {}
+        self.default_sprite = ''
         
     def add_pokemon(self, pokemon):
+        print('HERE IS THE INFO:')
+        print(pokemon)
         self.pokemon[pokemon.name] = pokemon
         
     def listAll(self):
@@ -95,6 +99,8 @@ class Pokedex:
     def get_pokemon(self, name) -> Pokemon:
         """fetches pokemon, adds to dex, & returns obj"""
         # populate pokemon names from type if not already
+        print(f'Getting: {name}')
+        print(f'Getting: {type(name)}')
         if not self.pokemon.get(name):
             type_data = r.get(f'https://pokeapi.co/api/v2/pokemon/{name}')
             if type_data.status_code == 200:
@@ -104,7 +110,9 @@ class Pokedex:
                     abilities = [ability['ability']['name'] for ability in data['abilities']], 
                     weight = data['weight'], 
                     types = [t['type']['name'] for t in data['types']], 
-                    species = data['species']['name'])
+                    species = data['species']['name'],
+                    default_sprite = data['sprites']['front_default'])
+                
                 self.add_pokemon(pokemon)
                 return self.pokemon.get(name)
             else: 
@@ -280,4 +288,3 @@ def main():
     ui.mainMenu(pokedex)
     ui.goodbye()
     
-main()

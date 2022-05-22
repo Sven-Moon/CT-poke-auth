@@ -1,0 +1,13 @@
+.submit {
+  margin: .25rem;
+  display: block;
+}
+
+fieldset {
+  max-width: 500px;
+  padding: 1rem;
+  flex-direction: column;
+}
+.separator {
+  margin: .5rem;
+}

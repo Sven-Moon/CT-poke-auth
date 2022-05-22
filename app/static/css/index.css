@@ -7,7 +7,7 @@ a {
   color: inherit;
 }
 
-.btn {
+/* .btn {
   border: none;
   background-color: white;
   color: black;
@@ -19,8 +19,13 @@ a {
   background-color: rgb(81, 81, 81);
   color: white;
   border: white;
-}
+} */
 
 body {
   padding: 1rem;
+
+}
+
+body * {
+  display: flex;
 }

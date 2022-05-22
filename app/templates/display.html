@@ -6,9 +6,11 @@
 {% endblock header %} {% block content %}
 <div class="row">
   <ul>
-    {% for attribute in attributes %}
-    <li>{{ attribute.name }}: {{ attribute.value }}</li>
-    {% endfor %}
+    <li>Name: {{ pokemon.name }}</li>
+    <li>Weight: {{ pokemon.weight }}</li>
+    <li>Species: {{ pokemon.species }}</li>
+    <li>Types: {{ ", ".join(pokemon.types) }}</li>
+    <li>Abilities: {{ ", ".join(pokemon.abilities) }}</li>
   </ul>
 </div>
 <!-- TODO: add script toggle display -->

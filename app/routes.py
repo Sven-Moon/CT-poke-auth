@@ -1,17 +1,29 @@
-from flask import render_template
+from flask import render_template, flash, redirect, url_for
 from app import app
+from app.forms import SearchForm
+import requests as r
+from pokedex import Pokedex, Pokemon
+
+pokedex = Pokedex()
 
 @app.route('/')
 def home():
  
     return render_template('home.html')
 
-@app.route('/explorer/display')
-def display():
- 
-    return render_template('display.html')
-
-@app.route('/explorer')
+@app.route('/explorer', methods=['GET','POST'])
 def explorer():
- 
-    return render_template('explorer.html')
+    form = SearchForm()
+    if form.validate_on_submit():
+        return redirect(url_for('display', pokemon_name=form.pokemon_name.data))
+    else:
+        flash(f'You have to add a name before pressing this button.', category='danger') 
+        
+    
+        
+    return render_template('explorer.html', title='Explorer',form=form)
+
+@app.route('/explorer/display/<string:pokemon_name>')
+def display(pokemon_name):
+    pokemon = pokedex.get_pokemon(pokemon_name)
+    return render_template('display.html', pokemon=pokemon)

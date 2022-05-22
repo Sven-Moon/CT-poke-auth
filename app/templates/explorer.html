@@ -2,10 +2,33 @@
 {% extends 'layout.html' %} {% block content %}
 <h2>Welcome to the Pokemon Explorer.</h2>
 
-<h2>Here, you can search for pokemon and learn about their abilities.</h2>
+<h4>Here, you can search for pokemon and learn about their abilities.</h4>
 
-<label for="nameInput">Name</label>
-<input type="text" id="nameInput" />
-<button class="btn">Search by Type</button>
+<form action="" method="POST">
+  {{ form.hidden_tag() }}
+  <fieldset>
+    <legend>Search</legend>
+    <div class="form-group">
+      {{ form.pokemon_name.label(class="form-control-label") }}
+        {% if form.pokemon_name.errors %}
+          {{ form.pokemon_name(class="form-control-label is-invalid") }}
+          <div class="invalid-feedback">
+            {% for error in form.pokemon_name.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          {{ form.pokemon_name(class="form-control form-control-lg") }}
+        {% endif %}
+    </div>
+    {# <label for="nameInput">Name</label>
+    <input type="text" id="nameInput" /> #}
+    <div class="separator">... OR ... </div>
+    <div>This thing: {{ form.pokemon_name.value }}</div>
+    <div>      
+      {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+  
+</form>
 
 {% endblock content %}
