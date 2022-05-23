@@ -1,4 +1,8 @@
 
-ul .card {
+div.card {
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.437);
+}
+ul.card {
   max-width: 500px;
 }

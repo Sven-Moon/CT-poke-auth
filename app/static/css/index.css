@@ -9,12 +9,12 @@ a {
 
 body {
   padding: 1rem;
-
+  background-image: linear-gradient(to bottom right, rgb(240, 240, 240), rgb(203, 203, 203));
 }
 
-body * {
+/* body * {
   display: flex;
-}
+} */
 
 ul {
   padding: 0;

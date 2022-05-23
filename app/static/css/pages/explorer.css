@@ -11,3 +11,10 @@ fieldset {
 .separator {
   margin: .5rem;
 }
+.types {
+  display: flex;
+  flex-flow: row wrap;
+}
+.types li {
+  margin: auto;
+}

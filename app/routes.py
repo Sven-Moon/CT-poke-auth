@@ -24,7 +24,7 @@ def explorer():
         
     return render_template('explorer.html', title='Explorer',form=form)
 
-@app.route('/explorer/display/<string:pokemon_name>')
+@app.route('/explorer/<string:pokemon_name>')
 def display(pokemon_name):
     pokemon = pokedex.get_pokemon(pokemon_name)
     abilities = [pokedex.get_ability(ability_name) for ability_name in pokemon.abilities]
