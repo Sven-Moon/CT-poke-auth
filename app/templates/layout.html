@@ -32,8 +32,13 @@
       </li>
     </ul>
     <ul class="nav ml-auto">
+      {% if current_user.is_authenticated %}
+      <div class="nav-item nav-link">{{ current_user.username }}</div>
+      <a href="{{url_for('auth.logout')}}" class="nav-item nav-link">Logout</a>
+      {% else %}
       <a href="{{url_for('auth.login')}}" class="nav-item nav-link">Login</a>
       <a href="{{url_for('auth.register')}}" class="nav-item nav-link">Register</a>
+      {% endif %}
     </ul>
   </nav>
   {% with messages = get_flashed_messages(with_categories=true) %}

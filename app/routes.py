@@ -8,11 +8,17 @@ from pokedex import Pokedex, Pokemon
 pokedex = Pokedex()
 
 @app.route('/')
+def base():
+ 
+    return redirect(url_for('home'))
+
+@app.route('/home')
 def home():
  
     return render_template('home.html')
 
 @app.route('/explorer', methods=['GET','POST'])
+@login_required
 def explorer():
     form = SearchForm()
     if form.validate_on_submit():
@@ -20,9 +26,7 @@ def explorer():
     
     if form.errors:
         flash(f'You have to add a name before pressing this button.', category='danger') 
-        
-    
-        
+
     return render_template('explorer.html', title='Explorer',form=form)
 
 @app.route('/explorer/<string:pokemon_name>')

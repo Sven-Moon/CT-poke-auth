@@ -59,4 +59,5 @@ def register():
 @login_required
 def logout():
     logout_user()
-    return redirect('home.html')
+    flash('Bye!', 'info')
+    return redirect(url_for('home'))
