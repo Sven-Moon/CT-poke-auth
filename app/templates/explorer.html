@@ -1,5 +1,7 @@
 <!-- prettier-ignore -->
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout.html' %}
+
+{% block content %}
 <h2>Welcome to the Pokemon Explorer.</h2>
 
 <h4>Here, you can search for pokemon and learn about their abilities.</h4>
@@ -10,19 +12,19 @@
     <legend>Search</legend>
     <div class="form-group">
       {{ form.pokemon_name.label(class="form-control-label") }}
-        {% if form.pokemon_name.errors %}
-          {{ form.pokemon_name(class="form-control-label is-invalid") }}
-          <div class="invalid-feedback">
-            {% for error in form.pokemon_name.errors %}
-              <span>{{ error }}</span>
-            {% endfor %}
-          </div>
-        {% else %}
-          {{ form.pokemon_name(class="form-control form-control-lg") }}
-        {% endif %}
+      {% if form.pokemon_name.errors %}
+      {{ form.pokemon_name(class="form-control-label is-invalid") }}
+      <div class="invalid-feedback">
+        {% for error in form.pokemon_name.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      {{ form.pokemon_name(class="form-control form-control-lg") }}
+      {% endif %}
     </div>
-    <div>      
+    <div>
       {{ form.submit(class="btn btn-outline-info") }}
-    </div>  
-  </form>
+    </div>
+</form>
 {% endblock content %}

@@ -31,20 +31,20 @@ def register():
     # check to make sure not already registered
     if request.method == 'POST':
         if form.validate_on_submit():
-            user_name = User.query.filter_by(username=form.username.data)
-            email = User.query.filter_by(email=form.email.data)
+            user_name = User.query.filter_by(username=form.username.data).first()
+            email = User.query.filter_by(email=form.email.data).first()
             print(user_name)
             print(email)
             if not (user_name or email):
-                user = User(form.username,form.email,form.password)
+                user = User(form.username.data,form.email.data,form.password.data)
                 try:
                     db.session.add(user)
                     db.session.commit()
                 except:
                     flash('There was an unknown error when trying to register you', 'danger')
                     return redirect(url_for('auth.register'))                    
-                login(user)
-                flash(f'Welcome to your Pokehome. We\'ll call you {current_user.username} and we don\t even care about your real name.')
+                login_user(user)
+                flash(f"Welcome to your Pokehome. We\'ll call you {current_user.username}. We don't even care about your real name.")
                 return redirect(url_for('home'))  
             elif user_name:
                 flash('That username has been taken. Be more creative.', 'warning')
