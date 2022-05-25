@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     created = db.Column(db.DateTime, default=datetime.utcnow())
     
     def __init__(self,username,email,password):
-        self.id = str(uuid4)
+        self.id = str(uuid4())
         self.username = username
         self.email = email.lower()
         self.password = generate_password_hash(password)

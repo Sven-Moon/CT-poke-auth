@@ -14,8 +14,10 @@ def login():
     if request.method == 'POST':
         if form.validate_on_submit():
             user = User.query.filter_by(username=form.username.data).first()
+            print(user)
             # check if username/pw correct
-            if user and check_password_hash(user.password, form.username.data):
+            print(user.password, form.username.data)
+            if user and check_password_hash(user.password, form.password.data):
             # if so, log in & advance next_page or home, w/ msg
                 login_user(user)
                 flash('You logged in. Great.', 'success')
